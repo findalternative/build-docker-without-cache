@@ -1,0 +1,23 @@
+- pipeline: "Build Docker without cache"
+  events:
+  - type: "PUSH"
+    refs:
+    - "refs/heads/main"
+  no_skip_to_most_recent: true
+  auto_clear_cache: true
+  fail_on_prepare_env_warning: true
+  resources: "XLARGE"
+  actions:
+  - action: "Execute ls -la"
+    type: "BUILD"
+    docker_image_name: "library/ubuntu"
+    docker_image_tag: "20.04"
+    execute_commands:
+    - "ls -la baserepo"
+    shell: "BASH"
+  - action: "Build Docker image"
+    type: "DOCKERFILE"
+    dockerfile_path: "baserepo/Dockerfile"
+    context_path: "baserepo/"
+    do_not_prune_images: true
+    pull: false
