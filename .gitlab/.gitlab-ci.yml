@@ -1,0 +1,10 @@
+build-job:
+  image: docker:cli
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  services:
+    - docker:dind
+  stage: build
+  script:
+    - cd baserepo
+    - docker build -t image .
