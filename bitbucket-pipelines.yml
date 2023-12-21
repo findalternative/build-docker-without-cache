@@ -1,0 +1,12 @@
+image: atlassian/default-image:4
+pipelines:
+  default:
+    - step:
+        name: Build Docker without cache
+        script: 
+          - git submodule sync
+          - git submodule update --init  --recursive
+          - cd baserepo
+          - docker build -t image .
+        services:
+          - docker
