@@ -1,0 +1,2 @@
+steps:
+  - command: cd baserepo && docker build -t image . --no-cache
