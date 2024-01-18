@@ -1,12 +1,19 @@
 image: atlassian/default-image:4
+options:
+  size: 2x
+  docker: true
+definitions:
+  services:
+    docker:
+      memory: 7128 
 pipelines:
   default:
     - step:
-        name: Build Docker without cache
+        name: Build Docker with cache
         script: 
+          - export DOCKER_BUILDKIT=1
           - git submodule sync
-          - git submodule update --init  --recursive
+          - git submodule update --init --recursive
           - cd baserepo
           - docker build -t image .
-        services:
-          - docker
+        services: [docker]
