@@ -1,2 +1,2 @@
 steps:
-  - command: cd baserepo && docker buildx build --no-cache=true -t image.
+  - command: cd baserepo && docker buildx build --no-cache=true -t image .
