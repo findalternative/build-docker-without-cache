@@ -1,2 +1,5 @@
 steps:
   - command: cd baserepo && docker buildx build --no-cache=true -t image .
+    key: build
+  - command: docker buildx prune -f
+    depends_on: build
