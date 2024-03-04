@@ -8,5 +8,3 @@ build-job:
   script:
     - cd baserepo
     - echo "docker build -t image ."
-  rules:
-    - if: $ENABLE_PIPELINES == "true"
