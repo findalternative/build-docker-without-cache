@@ -9,6 +9,9 @@ definitions:
 pipelines:
   default:
     - step:
+        runs-on:
+          - self.hosted
+          - linux
         name: Build Docker with cache
         script: 
           - export DOCKER_BUILDKIT=1
