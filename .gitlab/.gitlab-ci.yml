@@ -7,4 +7,4 @@ build-job:
   stage: build
   script:
     - cd baserepo
-    - echo "docker build -t image ."
+    - docker build -t image .
